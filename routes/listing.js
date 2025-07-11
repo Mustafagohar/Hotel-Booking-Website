@@ -12,7 +12,7 @@ router.get("/listings", wrapAsync(async (_req, res) => {
     }
   }));
 
-  // new route
+  // new Route
 
   router.get("/listings/new", (_req, res)=>{
     res.render("listings/new.ejs");
