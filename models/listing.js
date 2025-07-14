@@ -10,7 +10,7 @@ const listingSchema = new Schema({
         type: String,
     },
     image: {
-        filename: { type: String }, 
+        filename: { type: String } 
         url: {
             type: String,
             set: (v) => v === "" ? "https://img.sm360.ca/ir/w640h480/images/article/groupe-theetge/108037//s-63-amg-peformance1670604516124.jpeg" : v,
