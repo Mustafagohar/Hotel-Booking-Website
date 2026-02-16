@@ -1,0 +1,344 @@
+<%- layout("layouts/boilerplate") %>
+
+<style>
+  body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7fa;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #1e3c72;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .header .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #1e3c72;
+    text-decoration: none;
+  }
+
+  .header .login-btn {
+    background-color: #1e3c72;
+    color: white;
+    padding: 10px 25px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: 0.3s ease;
+  }
+
+  .header .login-btn:hover {
+    background-color: #2a5298;
+  }
+
+  .hero {
+    background: linear-gradient(45deg, rgba(30, 60, 114, 0.8), rgba(42, 82, 152, 0.8)),
+                url('https://images.unsplash.com/photo-1501117716987-c8e1ecb210d6?auto=format&fit=crop&w=1600&q=80') no-repeat center center;
+    background-size: cover;
+    padding: 120px 0;
+    text-align: center;
+    color: white;
+  }
+
+  .hero h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+  }
+
+  .hero p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+  }
+
+  .hero .btn-primary {
+    background-color: #2a5298;
+    color: white;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 30px;
+    transition: 0.3s ease;
+    text-decoration: none;
+  }
+
+  .hero .btn-primary:hover {
+    background-color: #1e3c72;
+  }
+
+  .search-bar {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 30px auto;
+    display: flex;
+    gap: 15px;
+  }
+
+  .search-bar input {
+    flex: 1;
+    padding: 15px;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    border: 1px solid #ddd;
+  }
+
+  .search-bar button {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    background-color: #1e3c72;
+    border: none;
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  .search-bar button:hover {
+    background-color: #2a5298;
+  }
+
+  .hotel-listings {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 50px auto;
+    max-width: 1200px;
+    gap: 20px;
+  }
+
+  .hotel-card {
+    flex: 1 1 calc(33% - 20px);
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease;
+    overflow: hidden;
+    min-width: 280px;
+  }
+
+  .hotel-card:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  }
+
+  .hotel-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .card-body {
+    padding: 20px;
+  }
+
+  .card-body h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .card-body p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: #555;
+  }
+
+  .price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2a5298;
+  }
+
+  .testimonials {
+    background-color: #e8f4f8;
+    padding: 50px 0;
+    text-align: center;
+  }
+
+  .testimonials h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+
+  .testimonial-item {
+    display: inline-block;
+    width: 45%;
+    margin: 20px 2.5%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .testimonial-item img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+  }
+
+  .testimonial-item h4 {
+    font-size: 1.5rem;
+    color: #1e3c72;
+    margin-bottom: 10px;
+  }
+
+  .testimonial-item p {
+    font-style: italic;
+    color: #777;
+  }
+
+  .signup-form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 50px auto;
+  }
+
+  .signup-form h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  .form-control {
+    margin-bottom: 15px;
+    padding: 15px;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    width: 100%;
+    border: 1px solid #ddd;
+  }
+
+  .signup-form button {
+    background-color: #1e3c72;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 30px;
+    width: 100%;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  .signup-form button:hover {
+    background-color: #2a5298;
+  }
+
+  .footer {
+    background-color: #1e3c72;
+    color: white;
+    text-align: center;
+    padding: 30px 0;
+  }
+
+  .footer a {
+    color: #bbb;
+    text-decoration: none;
+  }
+
+  .footer a:hover {
+    color: white;
+  }
+</style>
+
+<!-- Header Section -->
+<div class="header">
+  <a href="/" class="logo">Wanderlust Hotels</a>
+  <a href="/login" class="login-btn">Login</a>
+</div>
+
+<!-- Hero Section -->
+<div class="hero">
+  <h1>Welcome to Wanderlust Hotels</h1>
+  <p>Find and book the perfect stay for your next adventure!</p>
+  <a href="#search" class="btn-primary">Start Searching</a>
+</div>
+
+<!-- Search Bar Section -->
+<div class="search-bar" id="search">
+  <input type="text" placeholder="Search for hotels, cities, or destinations" />
+  <button type="submit">Search</button>
+</div>
+
+<!-- Hotel Listings Section -->
+<div class="hotel-listings">
+  <!-- Hotel 1 -->
+  <div class="hotel-card">
+    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" alt="Hotel 1" />
+    <div class="card-body">
+      <h3>Hotel Sunset</h3>
+      <p>Relax and enjoy stunning views with luxurious amenities.</p>
+      <div class="price">$199 / night</div>
+    </div>
+  </div>
+  <!-- Hotel 2 -->
+  <div class="hotel-card">
+    <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fG1vdW50YWlufGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60" alt="Hotel 2" />
+    <div class="card-body">
+      <h3>Grand Resort</h3>
+      <p>Indulge in the finest experience with world-class facilities.</p>
+      <div class="price">$299 / night</div>
+    </div>
+  </div>
+  <!-- Hotel 3 -->
+  <div class="hotel-card">
+    <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2FtcGluZ3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60" alt="Hotel 3" />
+    <div class="card-body">
+      <h3>Oceanfront Inn</h3>
+      <p>Enjoy serene beaches and peaceful surroundings.</p>
+      <div class="price">$159 / night</div>
+    </div>
+  </div>
+</div>
+
+<!-- Testimonials Section -->
+<div class="testimonials">
+  <h2>What Our Guests Say</h2>
+  <div class="testimonial-item">
+    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Guest 1" />
+    <h4>John Doe</h4>
+    <p>"The best stay of my life! Comfortable, relaxing, and unforgettable."</p>
+  </div>
+  <div class="testimonial-item">
+    <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Guest 2" />
+    <h4>Jane Smith</h4>
+    <p>"A luxurious experience. The hotel was fantastic, and the service was top-notch!"</p>
+  </div>
+</div>
+
+<!-- Signup Form Section -->
+<div class="signup-form">
+  <h2>Create an Account</h2>
+  <form action="/signup" method="POST">
+    <input type="text" name="username" class="form-control" placeholder="Username" required />
+    <input type="email" name="email" class="form-control" placeholder="Email Address" required />
+    <input type="password" name="password" class="form-control" placeholder="Password" required />
+    <button type="submit">Sign Up</button>
+  </form>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>&copy; 2025 Wanderlust Hotels. All rights reserved.</p>
+  <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+</div>
